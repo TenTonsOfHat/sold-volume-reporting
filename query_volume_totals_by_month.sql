@@ -58,5 +58,5 @@ SELECT Month
     ,CAST(FORMAT((TotalAccepted/ElapsedBusinessDays)*TotalBusinessDays, 'N') as VARCHAR(Max)) Projected
     ,'(' + CAST(ElapsedBusinessDays as VARCHAR(Max)) +'/' + CAST(TotalBusinessDays as VARCHAR(Max)) + ')' as  [Business Days]
 FROM Projected WITH (NOLOCK)
-Where Month is not NULL
-ORDER BY AcceptedMonth
+WHERE Month >= DATEADD(MONTH, -12, DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0))
+ORDER BY Month

@@ -11,6 +11,9 @@ from sqlalchemy import create_engine, URL
 
 app = typer.Typer()
 
+volume_app = typer.Typer()
+app.add_typer(volume_app, name="volume", help="Volume reporting commands")
+
 def load_database_connections(connections_file: str) -> tuple[str, List[Dict]]:
     """Load database connection details from JSON file."""
     with open(connections_file, 'r') as f:
@@ -83,11 +86,20 @@ def combine_csvs_to_excel(csv_files: List[str], output_dir: str) -> str:
     
     return excel_path
 
-@app.command()
+@app.command(name="generate")
 def generate_reports(
-    connections_file: str = typer.Option(..., help="Path to database connections JSON file"),
-    query_file: str = typer.Option(..., help="Path to SQL query file"),
-    output_dir: str = typer.Option(..., help="Directory to save CSV reports")
+    connections_file: str = typer.Option(
+        "database_connections.json",
+        help="Path to database connections JSON file"
+    ),
+    query_file: str = typer.Option(
+        "query_volume_totals_by_month.sql",
+        help="Path to SQL query file"
+    ),
+    output_dir: str = typer.Option(
+        "reports",
+        help="Directory to save CSV reports"
+    )
 ):
     """Generate volume reports for all databases defined in connections file."""
     # Create output directory if it doesn't exist
