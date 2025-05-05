@@ -1,51 +1,42 @@
-# Progress: Volume Reporting System
+# Progress
 
-## Completed Features
-1. ✅ Database connection management
-   - JSON configuration loading
-   - SQLAlchemy integration
-   - Multi-database support
+## What Works
+1. Database Connectivity
+   - Multiple database support via JSON configuration
+   - Secure credential handling
+   - Error handling for connection issues
 
-2. ✅ Query execution
-   - SQL file loading
-   - Parameterized execution
-   - Error handling
-
-3. ✅ File generation
-   - Individual CSV files
-   - Consolidated Excel file
+2. Report Generation (generate command)
+   - 12-month volume reports
+   - CSV file generation
+   - Excel consolidation
    - Auto-sized columns
-   - Date-based naming
 
-4. ✅ CLI interface
-   - Typer integration
-   - Required parameters
-   - Help messages
+3. Summary View (summary command)
+   - Prior month volume data
+   - Markdown formatted output
+   - Client and database information display
+   - Empty data handling
 
-## Working Features
-- Database connectivity
-- Query execution
-- CSV generation
-- Excel consolidation
-- Column auto-sizing
-- Error handling
-- Date-based file naming
+## What's Left to Build
+1. Additional Summary Views
+   - Current month summary
+   - Year-to-date summary
+   - Custom date range summary
 
-## Known Issues
-- None currently identified
-
-## Pending Features
-1. Logging to file
-2. Email notifications
-3. Date range selection
-4. Report validation
-5. Performance optimization for large datasets
+2. Enhanced Features
+   - Export options for summary data
+   - Performance optimizations
+   - Additional data points in summaries
+   - Report validation
 
 ## Current Status
-The system is fully functional and ready for use. All core requirements have been implemented and tested. The system successfully:
-- Connects to multiple databases
-- Executes the volume query
-- Generates individual CSV files
-- Creates a consolidated Excel file
-- Handles errors gracefully
-- Uses date-based file naming 
+- Core functionality complete
+- Two main commands implemented
+- Basic error handling in place
+- Output formatting improved
+
+## Known Issues
+- None currently reported
+- Performance with very large datasets not tested
+- No validation of report data accuracy 

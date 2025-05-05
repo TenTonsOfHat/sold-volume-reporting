@@ -130,5 +130,37 @@ def generate_reports(
         except Exception as e:
             typer.echo(f"Error combining reports into Excel: {str(e)}", err=True)
 
+@app.command(name="summary")
+def show_summary(
+    connections_file: str = typer.Option(
+        "database_connections.json",
+        help="Path to database connections JSON file"
+    ),
+    query_file: str = typer.Option(
+        "query_prior_month_volume.sql",
+        help="Path to SQL query file"
+    )
+):
+    """Display a summary of prior month's volume data for all databases."""
+    # Load database connections and SQL driver
+    sql_driver, connections = load_database_connections(connections_file)
+    
+    # Process each database
+    for conn in connections:
+        try:
+            typer.echo(f"\n# {conn['client']} - {conn['server']}/{conn['database']}")
+            df = execute_query(conn, query_file, sql_driver)
+            
+            if df.empty:
+                typer.echo("No data available for the prior month.")
+                continue
+                
+            # Convert DataFrame to markdown table
+            markdown_table = df.to_markdown(index=False)
+            typer.echo("\n" + markdown_table + "\n")
+            
+        except Exception as e:
+            typer.echo(f"Error processing {conn['client']}: {str(e)}", err=True)
+
 if __name__ == "__main__":
     app() 

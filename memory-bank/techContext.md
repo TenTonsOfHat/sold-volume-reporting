@@ -1,43 +1,31 @@
-# Technical Context: Volume Reporting System
+# Technical Context
 
-## Technologies
+## Technologies Used
 - Python 3.x
 - SQL Server
-- SQLAlchemy
-- pandas
-- openpyxl
-- pyodbc
-- Typer
+- Required Python Packages:
+  - typer (CLI interface)
+  - pandas (data manipulation)
+  - pyodbc (database connectivity)
+  - sqlalchemy (database engine)
+  - openpyxl (Excel file handling)
+  - tabulate (markdown table formatting)
 
 ## Development Setup
-1. Python environment with required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. Required files:
-   - `volume_report.py`: Main script
-   - `database_connections.json`: Database credentials
-   - `query_volume_totals_by_month.sql`: SQL query
-   - `requirements.txt`: Dependencies
+- SQL Server connection via pyodbc
+- JSON configuration for database connections
+- SQL query files for data extraction
+- Command-line interface with two main commands:
+  1. `generate` - Full report generation
+  2. `summary` - Quick prior month summary
 
 ## Technical Constraints
-- Requires SQL Server ODBC driver
-- Needs access to multiple SQL Server instances
-- Requires sufficient disk space for CSV and Excel files
-- Python 3.x environment
+- Requires SQL Server access
+- Database connections must be configured in JSON
+- SQL queries must be compatible with SQL Server syntax
+- Output directory must be writable
 
 ## Dependencies
-```python
-typer>=0.9.0
-pyodbc>=4.0.39
-pandas>=2.0.0
-openpyxl>=3.1.0
-sqlalchemy>=2.0.0
-```
-
-## Database Requirements
-- SQL Server instances
-- ODBC Driver 17 for SQL Server
-- Appropriate database permissions
-- Network access to all databases 
+- SQL Server ODBC driver
+- Python packages listed in requirements.txt
+- Access to configured databases 

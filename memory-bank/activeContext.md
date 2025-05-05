@@ -1,32 +1,30 @@
-# Active Context: Volume Reporting System
+# Active Context
 
 ## Current Focus
-- Completed initial implementation of volume reporting system
-- Successfully integrated SQLAlchemy for database connectivity
-- Implemented auto-sized columns in Excel output
-- Established date-based file naming convention
+- Volume reporting system with two main functionalities:
+  1. Detailed monthly reports (generate command)
+  2. Quick prior month summary (summary command)
 
 ## Recent Changes
-1. Switched from direct pyodbc to SQLAlchemy for database connections
-2. Added auto-sizing of Excel columns
-3. Modified file naming to use date-only format
-4. Improved error handling and logging
+1. Added new `summary` command
+   - Shows prior month's volume data
+   - Displays in markdown format
+   - Includes client and database information in titles
+   - Uses dedicated SQL query for prior month data
+
+2. Enhanced output formatting
+   - Added database server/name to summary titles
+   - Improved markdown table presentation
+   - Better error handling and empty data detection
 
 ## Next Steps
-1. Consider adding:
-   - Logging to file
-   - Email notification of report completion
-   - Command-line options for date range
-   - Report validation checks
+- Consider adding more summary views (e.g., current month, YTD)
+- Explore adding more data points to summary view
+- Consider adding export options for summary data
+- Evaluate performance optimizations for large datasets
 
 ## Active Decisions
-- Using SQLAlchemy for database connectivity (best practice)
-- Date-based file naming (YYYYMMDD format)
-- Separate CSV files with consolidated Excel output
-- Auto-sized columns for better readability
-
-## Current Considerations
-- Security of database credentials
-- Performance with large datasets
-- Error recovery strategies
-- Report validation requirements 
+- Using markdown format for console output
+- Separating detailed and summary queries
+- Including database connection details in output
+- Maintaining backward compatibility with existing reports 
