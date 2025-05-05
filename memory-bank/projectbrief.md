@@ -1,13 +1,27 @@
-# Project Brief
+# Project Brief: Volume Reporting System
 
-## Project Overview
-This project is focused on sold volume reporting. The exact scope and requirements will be defined as we gather more information.
+## Overview
+A Python-based reporting system that generates volume reports from multiple SQL Server databases and consolidates them into Excel format.
 
 ## Core Requirements
-- To be defined based on project needs
+1. Read database connection details from a JSON configuration file
+2. Execute a standardized SQL query against multiple SQL Server databases
+3. Generate individual CSV reports for each client
+4. Combine all reports into a single Excel file with multiple sheets
+5. Support daily report generation with date-based file naming
 
 ## Goals
-- To be defined based on project needs
+- Provide a unified view of volume data across multiple clients
+- Automate the reporting process
+- Ensure consistent data formatting across all reports
+- Make reports easily accessible and readable
+
+## Scope
+- Python script with CLI interface
+- SQL Server database connectivity
+- CSV and Excel file generation
+- Error handling and logging
+- Date-based file management
 
 ## Project Scope
 - To be defined based on project needs
